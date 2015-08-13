@@ -1,0 +1,11 @@
+---
+applications:
+- name: file-server
+  memory: 512M
+  instances: 1
+  host: file-server
+  path: target/file-server-${version}.jar
+  services: 
+  - sso
+  env:
+    SPRING_PROFILES_ACTIVE: "cloud"

@@ -138,7 +138,7 @@
 							<goal>exec</goal>
 						</goals>
 						<configuration>
-							<executable>${basedir}/scripts/prepare_repo.sh</executable>
+							<executable>${basedir}/scripts/prepare_files.sh</executable>
 						</configuration>
 						<phase>generate-resources</phase>
 					</execution>

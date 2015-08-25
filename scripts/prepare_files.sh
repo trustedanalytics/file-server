@@ -33,6 +33,11 @@ cd ./scripts
 
    mkdir -p atk/package/config/trustedanalytics-python-client/trustedanalytics
 
+cp -r atk/python-client/trustedanalytics atk/package/config/trustedanalytics-python-client/trustedanalytics/
+
+
+cd atk/package/config/trustedanalytics-python-client/
+
    cp -r atk/python-client/trustedanalytics atk/package/config/trustedanalytics-python-client/trustedanalytics/
 
 

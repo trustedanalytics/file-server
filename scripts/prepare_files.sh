@@ -18,45 +18,7 @@
 set -eu
 # run the script from main directory
 
-
 REPO_FOLDER=src/main/resources/static/files
-
-
-getAtkAndBuildClientPackage() {
-
-cd ./scripts
-
-   echo "Fetching ATK from github"
-
-   git clone https://github.com/trustedanalytics/atk.git
-
-
-   mkdir -p atk/package/config/trustedanalytics-python-client/trustedanalytics
-
-cp -r atk/python-client/trustedanalytics atk/package/config/trustedanalytics-python-client/trustedanalytics/
-
-
-cd atk/package/config/trustedanalytics-python-client/
-
-   cp -r atk/python-client/trustedanalytics atk/package/config/trustedanalytics-python-client/trustedanalytics/
-
-
-      cd atk/package/config/trustedanalytics-python-client/
-
-      set +e
-      ./pypi.sh intel-data trustedanalytics `date '+%d%m%Y_%H%M%S'` build 
-      set -e
-
-   cd -
-
-   cp atk/package/config/trustedanalytics-python-client/trustedanalytics/dist/*.tar.gz ./
-   pwd
-
-   rm -fr atk
-
-cd ..
-
-}
 
 makeindex() {
 
@@ -80,18 +42,16 @@ makeindex() {
 mkdir -p $REPO_FOLDER
 #remove old repo content
 rm -fr $REPO_FOLDER/*
-rm -fr scripts/*.tar.gz
 
 # download repository content
 
+wget https://pypi.analyticstoolkit.intel.com/latest/simple/trustedanalytics/ -r -l 1
 
-getAtkAndBuildClientPackage
-echo "ATK FETCHED"
+#copy *tar.gz to main directory
+for file in `find ./|grep tar.gz`; do mv $file $REPO_FOLDER/; done
 
-find ./|grep tar.gz |wc -l
-
-
-for file in `find ./scripts/ |grep tar.gz`; do mv $file $REPO_FOLDER/; done
+#remove not necessary folder left by wget
+rm -fr pypi.analyticstoolkit*
 
 
 echo "Indexing files"

@@ -14,6 +14,11 @@
 	</parent>
 
 	<dependencies>
+		<dependency>
+			<groupId>org.trustedanalytics</groupId>
+			<artifactId>rest-error-handling</artifactId>
+			<version>0.0.1</version>
+		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>

@@ -15,48 +15,10 @@
 # limitations under the License.
 #
 
-set -eu
 # run the script from main directory
 
-REPO_FOLDER=src/main/resources/static/files
+# REPO_FOLDER=src/main/resources/static/files
 
-makeindex() {
+# Add files to REPO_FOLDER 
 
-   rm -fr index.html
-      rm -fr atkclient
-
-      for file in `ls *.gz |sort -r`; do
-
-         echo "<a href=\"$file\">$file</a>" >> index.html
-         echo "Adding $file"
-
-      done
-      for file in `ls *.gz |sort -r`; do
-
-      echo "{ \"file\": \"$file\" }" >> atkclient
-      echo "Putting $file to atkclient"
-      break
-      done
-}
-
-mkdir -p $REPO_FOLDER
-#remove old repo content
-rm -fr $REPO_FOLDER/*
-
-# download repository content
-
-wget https://pypi.analyticstoolkit.intel.com/latest/simple/trustedanalytics/ -r -l 1
-
-#copy *tar.gz to main directory
-for file in `find ./|grep tar.gz`; do mv $file $REPO_FOLDER/; done
-
-#remove not necessary folder left by wget
-rm -fr pypi.analyticstoolkit*
-
-
-echo "Indexing files"
-cd $REPO_FOLDER
-   makeindex
-cd -
-echo "Done"
 

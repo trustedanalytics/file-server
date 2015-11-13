@@ -1,5 +1,5 @@
 # file-server
-OAuth protected simple statice file server in Spring Boot.
+OAuth protected simple static file server in Spring Boot.
 
 
 How to use it:

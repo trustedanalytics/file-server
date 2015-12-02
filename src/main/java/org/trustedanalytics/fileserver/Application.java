@@ -17,13 +17,11 @@ package org.trustedanalytics.fileserver;
 
 import org.trustedanalytics.utils.errorhandling.EnableRestErrorHandling;
 
-import com.mangofactory.swagger.plugin.EnableSwagger;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.security.oauth2.resource.EnableOAuth2Resource;
 
 @EnableOAuth2Resource
-@EnableSwagger
 @SpringBootApplication
 @EnableRestErrorHandling
 public class Application {
